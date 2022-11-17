@@ -17,7 +17,9 @@ const Places = conn.define('places', {
 
 const Souvenir = conn.define('souvenir', {});
 
-Souvenir.belongsTo(Places);
+Souvenir.belongsTo(Places); //This creates a "placeId" column in the Souvenirs model.
+Souvenir.belongsTo(People); //This creates a "personId" column in the Souvenirs model.
+Souvenir.belongsTo(Things); //This creates a "thingId" column in the Souvenirs model.
 
 const syncAndSeed = async () => {
   await conn.sync({ force: true });
@@ -44,4 +46,4 @@ const syncAndSeed = async () => {
   ]);
 };
 
-module.exports = { People, Things, Places, syncAndSeed };
+module.exports = { People, Things, Places, Souvenir, syncAndSeed };
